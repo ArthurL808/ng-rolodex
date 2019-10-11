@@ -8,8 +8,6 @@ exports.up = function(knex) {
       table.string('work')
       table.string('home')
       table.string('email')
-      table.string('twitter')
-      table.string('instagram')
       table.string('github')
       table.timestamps(true,true)
   })

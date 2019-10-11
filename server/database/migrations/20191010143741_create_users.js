@@ -7,6 +7,7 @@ exports.up = function(knex) {
       table.string('email')
       table.string('address')
       table.timestamps(true,true)
+      table.unique('username')
   })
 };
 
