@@ -1,0 +1,22 @@
+<h1>Home</h1>
+
+<div>
+    <p>Search for a contact</p>
+  <form>
+    <div>
+      <input type="text" />
+    </div>
+  </form>
+</div>
+
+<div class="container">
+    <div class="contacts" *ngFor='let contact of contacts'>
+        <h1>Name: {{contact.name}}</h1>
+        <p>Address: {{contact.address}}</p>
+        <p>Mobile: {{contact.mobile}}</p>
+        <p>Work: {{contact.work}}</p>
+        <p>Home: {{contact.home}}</p>
+        <p>Email: {{contact.email}}</p>
+        <p>Github: {{contact.github}}</p>
+    </div>
+</div>
