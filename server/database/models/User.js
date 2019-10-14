@@ -8,4 +8,4 @@ class User extends bookshelf.Model{
         return true
     }
 }
-module.exports = bookshelf.Model('User',User)
+module.exports = bookshelf.model('User',User)

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BackendService} from '../../services/backend.service'
 
 @Component({
   selector: 'app-home',
@@ -6,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-contacts = [
-  {name:'test1',address:'test1',mobile:'test1',work:'test1',home:'test1',email:'test1',github:'test1'},{name:'test2',address:'test2',mobile:'test2',work:'test2',home:'test2',email:'test2',github:'test2'}
-]
-  constructor() { }
+  contacts;
+
+  constructor(private backend: BackendService) { }
 
   ngOnInit() {
+    this.backend.contact().then(res =>{
+      console.log(res)
+      this.contacts = res;
+
+      console.log(this.contacts)
+    })
   }
 
 }
