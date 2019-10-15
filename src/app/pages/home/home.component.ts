@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BackendService} from '../../services/backend.service'
 
 @Component({
@@ -6,18 +6,21 @@ import {BackendService} from '../../services/backend.service'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   contacts;
+  formData = {
+    name: '',
+  };
 
-  constructor(private backend: BackendService) { }
-
-  ngOnInit() {
-    this.backend.contact().then(res =>{
-      console.log(res)
+  constructor(private backend: BackendService) {
+    this.backend.contact().then(res => {
       this.contacts = res;
+    });
 
-      console.log(this.contacts)
-    })
   }
-
+      search = (data) => {
+      this.backend.search(this.formData.name).then(res => {
+        this.contacts = res;
+      });
+      }
 }
