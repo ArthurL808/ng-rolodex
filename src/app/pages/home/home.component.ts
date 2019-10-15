@@ -13,9 +13,7 @@ export class HomeComponent {
   };
 
   constructor(private backend: BackendService) {
-    this.backend.contact().then(res => {
-      this.contacts = res;
-    });
+
 
   }
       search = (data) => {

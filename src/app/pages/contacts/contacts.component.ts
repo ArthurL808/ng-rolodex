@@ -9,7 +9,7 @@ import {BackendService} from '../../services/backend.service'
 export class ContactsComponent {
   contacts;
   constructor(private backend: BackendService) {
-    this.backend.contact().then(res => {
+    this.backend.contacts().then(res => {
       this.contacts = res;
     });
   }

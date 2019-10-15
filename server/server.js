@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(dbDecorator);
 
-app.use("/api/contact", contactRoutes)
+app.use("/api/contacts", contactRoutes)
 
 app.listen(PORT, () => {
   console.log(`server started on PORT:${PORT}`);

@@ -6,18 +6,24 @@ import { HttpClient } from "@angular/common/http";
 })
 export class BackendService {
   constructor(private http: HttpClient) {}
-  contact() {
+  contacts() {
     return this.http
-      .get('/api/contact')
+      .get('/api/contacts')
       .toPromise()
       .then(response => {
         return response;
       });
   }
 
+  contactId(id){
+    return this.http.get('/api/contacts/' + id).toPromise().then(response => {
+      return response;
+    });
+  }
+
   search(data) {
     return this.http
-      .get('/api/contact/search/' + data)
+      .get('/api/contacts/search/' + data)
       .toPromise()
       .then(response => {
         return response;
