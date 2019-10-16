@@ -12,11 +12,9 @@ export class HomeComponent {
     name: '',
   };
 
-  constructor(private backend: BackendService) {
+  constructor(private backend: BackendService) { }
 
-
-  }
-      search = (data) => {
+      search = () => {
       this.backend.search(this.formData.name).then(res => {
         this.contacts = res;
       });

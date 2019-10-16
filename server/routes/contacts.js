@@ -26,4 +26,21 @@ router.get("/:id",(req,res)=>{
         console.log(err)
     })
 })
+
+router.post("/", (req,res)=>{
+  return req.db.Contact.forge({
+    name: `${req.body.name}`,
+    address: `${req.body.address}`,
+    mobile: `${req.body.mobile}`,
+    work: `${req.body.work}`,
+    home: `${req.body.home}`,
+    email: `${req.body.email}`,
+    github: `${req.body.github}`
+  }).save().then(results=>{
+    console.log(results)
+    res.redirect(`/`)
+  }).catch(err =>{
+    console.log(err)
+  })
+})
   module.exports = router

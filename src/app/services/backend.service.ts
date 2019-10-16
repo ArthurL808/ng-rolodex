@@ -15,7 +15,7 @@ export class BackendService {
       });
   }
 
-  contactId(id){
+  contactId(id) {
     return this.http.get('/api/contacts/' + id).toPromise().then(response => {
       return response;
     });
@@ -29,4 +29,10 @@ export class BackendService {
         return response;
       });
   }
+
+  create(data) {
+    return this.http.post('/api/contacts', data).toPromise()
+  }
+
+
 }
