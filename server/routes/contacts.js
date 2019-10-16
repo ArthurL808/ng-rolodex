@@ -43,4 +43,19 @@ router.post("/", (req,res)=>{
     console.log(err)
   })
 })
+
+router.put("/:id", (req,res)=>{
+  return req.db.Contact.forge({id: `${req.params.id}`}).save({name: `${req.body.name}`,address:`${req.body.address}`,mobile:`${req.body.mobile}`,work:`${req.body.work}`,home:`${req.body.home}`,email:`${req.body.email}`,github: `${req.body.github}`}).then(results =>{
+    res.json(results)
+  }).catch(err =>{
+    console.log(err)
+  })
+})
+
+router.delete('/:id', (req,res)=>{
+  return req.db.Contact.forge({id: `${req.params.id}`}).destroy().then(results =>{
+    res.json(results)
+  })
+})
+
   module.exports = router
