@@ -11,7 +11,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-
+import { ContactIdComponent } from './pages/contact-id/contact-id.component'
 @NgModule({
   declarations: [
     AppComponent, 
@@ -21,7 +21,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
      CreateComponent, 
      ProfileComponent, 
      LoginComponent, 
-     NotFoundComponent],
+     NotFoundComponent, ContactIdComponent],
   imports: [BrowserModule, 
     AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],

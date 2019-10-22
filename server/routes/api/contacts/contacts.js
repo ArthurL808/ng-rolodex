@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    return req.db.Contact.fetchAll()
+    return req.db.Contact.where('user_id', '=', `${req.user.id}`).fetchAll()
       .then(results => {
       return res.json(results);
       })
@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   });
 
 router.get("/search/:term", (req,res)=>{
-   return req.db.Contact.where('name','LIKE', `${req.params.term}%`).fetchAll().then(results =>{
+   return req.db.Contact.where('name','LIKE', `${req.params.term}%`).where('user_id', '=',`${req.user.id}`).fetchAll().then(results =>{
     return res.json(results)
    }).catch(err =>{
        console.log(err)
@@ -23,7 +23,7 @@ router.get("/:id",(req,res)=>{
     return req.db.Contact.where({id: `${req.params.id}`}).fetch().then(results =>{
         return res.json(results)
     }).catch(err =>{
-        console.log(err)
+        console.log(err.message)
     })
 })
 
@@ -35,10 +35,11 @@ router.post("/", (req,res)=>{
     work: `${req.body.work}`,
     home: `${req.body.home}`,
     email: `${req.body.email}`,
-    github: `${req.body.github}`
+    github: `${req.body.github}`,
+    user_id: `${req.user.id}`
   }).save().then(results=>{
     console.log(results)
-    res.redirect(`/`)
+    res.json(results)
   }).catch(err =>{
     console.log(err)
   })

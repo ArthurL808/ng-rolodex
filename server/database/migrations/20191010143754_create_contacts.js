@@ -9,6 +9,7 @@ exports.up = function(knex) {
       table.string('home')
       table.string('email')
       table.string('github')
+      table.integer('user_id').references('id').inTable('users')
       table.timestamps(true,true)
   })
 };

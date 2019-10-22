@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +35,31 @@ export class BackendService {
     return this.http.post('/api/contacts', data).toPromise()
   }
 
+  profile(){
+    return this.http.get('/api/profile').toPromise().then(res => {
+      return res;
+    })
+  }
 
+  login(data){
+    return this.http.post('/api/login', data).toPromise().then(res =>{
+      return res;
+    }).catch(err =>{
+      console.log(err.message)
+    })
+  }
+
+  register(data){
+    return this.http.post('/api/register',data).toPromise().then(res =>{
+      return res
+    })
+  }
+
+  logout(){
+    return this.http.get('/api/logout').toPromise().then(res =>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err.message)
+    })
+    }
 }

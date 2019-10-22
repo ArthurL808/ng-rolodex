@@ -1,21 +1,32 @@
-<ul class="nav">
-    <li>
+<div class="header">
+  <div class="header-left">
+    <ul class="nav">
+      <li>
         <a routerLink="/">
-            Home
+          Home
         </a>
-    </li>
-    <li>
+      </li>
+      <li>
         <a routerLink="contacts">View All Contacts</a>
-    </li>
-    <li>
+      </li>
+      <li>
         <a routerLink="create">Create Contacts</a>
-    </li>
-    <li>
+      </li>
+      <li>
         <a routerLink="profile">
-            My Profile
+          My Profile
         </a>
-    </li>
-    <li>
-        <a>Logout</a>
-    </li>
-</ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="header-left">
+      <div class="logged-out" *ngIf="!user.loggedIn">
+    <button (click)="login()">Login</button>
+</div>
+<div class="logged-in" *ngIf="user.loggedIn">
+    Welcome, {{user.username}}
+    <button (click)='logout()'>Logout</button>
+</div>
+  </div>
+</div>

@@ -1,1 +1,11 @@
 <h1>Login Page</h1>
+
+<form >
+
+    <input type="text" name="username" placeholder="username" [(ngModel)]="formData.username">
+
+
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="formData.password">
+
+    <button class="btn" (click)="login()">Login</button>
+</form>
