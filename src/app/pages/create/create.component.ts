@@ -23,16 +23,16 @@ export class CreateComponent {
     private router: Router) { }
 
   create = () => {
-    this.backend.create(this.formData)
-    this.formData.name = '';
-    this.formData.address = '';
-    this.formData.mobile = '';
-    this.formData.work = '';
-    this.formData.home = '';
-    this.formData.email = '';
-    this.formData.github = '';
-    this.router.navigate(['contacts'])
+    this.backend.create(this.formData).then(res =>{
+      this.formData.name = '';
+      this.formData.address = '';
+      this.formData.mobile = '';
+      this.formData.work = '';
+      this.formData.home = '';
+      this.formData.email = '';
+      this.formData.github = '';
+
+      this.router.navigate(['contacts'])
+    })
   }
-
-
 }

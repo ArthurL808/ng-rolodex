@@ -32,17 +32,19 @@ export class RegisterUserComponent {
       return this.error.password = 'Password must be longer then 3 characters'
     } else if (!this.formData.email.includes('@')){
      return this.error.email = 'Email must include an @ symbol';    } else {
-      this.backend.register(this.formData)
-      this.formData.name = ''
-      this.formData.username =''
-      this.formData.email = ''
-      this.formData.address = ''
-      this.formData.password = ''
-      this.formData.confirmPassword= ''
-      this.error.password = ''
-      this.error.email = ''
-      return this.router.navigate(['/login'])
-    }
+      this.backend.register(this.formData).then(res =>{
+
+        this.formData.name = ''
+        this.formData.username =''
+        this.formData.email = ''
+        this.formData.address = ''
+        this.formData.password = ''
+        this.formData.confirmPassword= ''
+        this.error.password = ''
+        this.error.email = ''
+        return this.router.navigate(['/login'])
+      })
+      }
   }
 
 

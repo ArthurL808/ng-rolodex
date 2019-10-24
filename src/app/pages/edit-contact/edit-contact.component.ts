@@ -28,7 +28,9 @@ export class EditContactComponent implements OnInit {
   edit = () => {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.backend.editContact(id,this.formData);
-    this.router.navigate([`contacts/${id}`])
+    this.backend.editContact(id,this.formData).then(res =>{
+      this.router.navigate([`contacts/${id}`])
+
+    })
   }
 }

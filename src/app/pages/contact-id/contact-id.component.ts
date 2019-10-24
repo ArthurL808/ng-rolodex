@@ -29,8 +29,9 @@ export class ContactIdComponent implements OnInit {
 
   delete = () => {
     const id = this.route.snapshot.paramMap.get('id');
-    this.backend.delete(id);
+    this.backend.delete(id).then(res =>{
 
     return this.router.navigate(['/contacts'])
+    })
   }
 }
