@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -17,7 +18,9 @@ export class CreateComponent {
     github: ''
   };
 
-  constructor(private backend: BackendService) { }
+  constructor(
+    private backend: BackendService,
+    private router: Router) { }
 
   create = () => {
     this.backend.create(this.formData)
@@ -28,6 +31,7 @@ export class CreateComponent {
     this.formData.home = '';
     this.formData.email = '';
     this.formData.github = '';
+    this.router.navigate(['contacts'])
   }
 
 

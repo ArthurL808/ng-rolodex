@@ -12,7 +12,9 @@
 
 <div class="container">
     <div class="contacts" *ngFor='let contact of contacts'>
-        <h1>Name: {{contact.name}}</h1>
+        <h1>
+         <a [routerLink]="['/contacts',contact.id]"> Name: {{contact.name}}</a>
+        </h1>
         <p>Address: {{contact.address}}</p>
         <p>Mobile: {{contact.mobile}}</p>
         <p>Work: {{contact.work}}</p>

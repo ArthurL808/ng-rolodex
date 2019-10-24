@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {BackendService} from '../../services/backend.service'
 
 @Component({
@@ -6,9 +6,11 @@ import {BackendService} from '../../services/backend.service'
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss']
 })
-export class ContactsComponent {
+export class ContactsComponent implements OnInit{
   contacts;
-  constructor(private backend: BackendService) {
+  constructor(private backend: BackendService) {}
+
+  ngOnInit(){
     this.backend.contacts().then(res => {
       this.contacts = res;
     });

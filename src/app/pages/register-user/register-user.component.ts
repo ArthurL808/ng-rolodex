@@ -28,6 +28,8 @@ export class RegisterUserComponent {
   register = () =>{
     if(this.formData.password !== this.formData.confirmPassword){
     return this.error.password = 'Passwords do not match.';
+    }else if(this.formData.password.length < 3){
+      return this.error.password = 'Password must be longer then 3 characters'
     } else if (!this.formData.email.includes('@')){
      return this.error.email = 'Email must include an @ symbol';    } else {
       this.backend.register(this.formData)
