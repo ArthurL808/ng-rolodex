@@ -33,7 +33,6 @@ export class RegisterUserComponent {
     } else if (!this.formData.email.includes('@')){
      return this.error.email = 'Email must include an @ symbol';    } else {
       this.backend.register(this.formData).then(res =>{
-
         this.formData.name = ''
         this.formData.username =''
         this.formData.email = ''
@@ -43,8 +42,10 @@ export class RegisterUserComponent {
         this.error.password = ''
         this.error.email = ''
         return this.router.navigate(['/login'])
-      })
-      }
+    }).catch(err =>{
+      console.log(err.message)
+    })
+    }
   }
 
 
