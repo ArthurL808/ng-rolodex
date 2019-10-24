@@ -54,6 +54,7 @@ router.put("/:id", (req,res)=>{
 })
 
 router.delete('/:id', (req,res)=>{
+  console.log('hit')
   return req.db.Contact.forge({id: `${req.params.id}`}).destroy().then(results =>{
     res.json(results)
   })

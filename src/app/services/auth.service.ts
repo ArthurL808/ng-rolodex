@@ -14,6 +14,7 @@ export class AuthService {
     login(data){
    return this.backend.login(data).then(res =>{
        this.session.setSession(res);
+       return res;
    }).catch(err =>{
        console.log(err.message)
    })

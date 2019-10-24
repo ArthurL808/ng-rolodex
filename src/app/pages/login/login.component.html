@@ -2,10 +2,25 @@
 
 <form >
 
-    <input type="text" name="username" placeholder="username" [(ngModel)]="formData.username">
+    <input 
+    type="text" 
+    name="username" 
+    placeholder="username" 
+    [(ngModel)]="formData.username"
+    (keyup)="validateUsername()">
 
 
-    <input type="password" name="password" placeholder="Password" [(ngModel)]="formData.password">
+    <input 
+    type="password" 
+    name="password" 
+    placeholder="Password"
+    [(ngModel)]="formData.password"
+    (keyup)="validatePassword()">
 
-    <button class="btn" (click)="login()">Login</button>
+    <button [disabled]="!usernameValid || !passwordValid" class="btn" (click)="login()">Login</button>
 </form>
+<div>
+    <h2>
+        {{error.login}}
+    </h2>
+</div>

@@ -24,6 +24,10 @@
       <div class="logged-out" *ngIf="!user.loggedIn">
     <button (click)="login()">Login</button>
 </div>
+<div class="register" *ngIf="!user.loggedIn">
+  <p>Not a user? Click here to sign up!</p>
+  <button (click)="register()">Sign Up</button>
+</div>
 <div class="logged-in" *ngIf="user.loggedIn">
     Welcome, {{user.username}}
     <button (click)='logout()'>Logout</button>

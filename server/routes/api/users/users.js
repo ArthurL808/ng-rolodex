@@ -9,8 +9,8 @@ router.get('/profile',(req,res)=>{
     })
 })
 
-router.put('/:id', (req,res)=>{
-    return req.db.User.forge({id: `${req.params.id}`}).save({name: `${req.body.name}`,username:`${req.body.username}`,email: `${req.body.email}`, address: `${req.body.address}`}).then(results =>{
+router.put('/', (req,res)=>{
+    return req.db.User.forge({id: `${req.body.id}`}).save({name: `${req.body.name}`,username:`${req.body.username}`,email: `${req.body.email}`, address: `${req.body.address}`}).then(results =>{
         console.log(results)
         res.json(results)
     }).catch(err =>{

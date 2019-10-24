@@ -11,7 +11,11 @@ import { CreateComponent } from './pages/create/create.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ContactIdComponent } from './pages/contact-id/contact-id.component'
+import { ContactIdComponent } from './pages/contact-id/contact-id.component';
+import { RegisterUserComponent } from './pages/register-user/register-user.component';
+import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component'
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -21,7 +25,7 @@ import { ContactIdComponent } from './pages/contact-id/contact-id.component'
      CreateComponent, 
      ProfileComponent, 
      LoginComponent, 
-     NotFoundComponent, ContactIdComponent],
+     NotFoundComponent, ContactIdComponent, RegisterUserComponent, EditContactComponent, EditProfileComponent],
   imports: [BrowserModule, 
     AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],

@@ -62,4 +62,28 @@ export class BackendService {
       console.log(err.message)
     })
     }
+
+    editContact(id,data){
+      return this.http.put('/api/contacts/' + id, data).toPromise().then(res =>{
+        return res
+      }).catch(err =>{
+        console.log(err.message)
+      })
+    }
+
+    editProfile(data){
+      return this.http.put('/api/users',data).toPromise().then(res =>{
+        return res;
+      }).catch(err =>{
+        console.log(err.message)
+      })
+    }
+
+    delete(id){
+      return this.http.delete('/api/contacts/' + id).toPromise().then(res =>{
+        return res;
+      }).catch(err =>{
+        console.log(err.message)
+      })
+    }
 }
