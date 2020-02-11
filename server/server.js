@@ -8,21 +8,30 @@ const bcrypt = require('bcryptjs')
 const redis = require('redis')
 const RedisStore = require('connect-redis')(session)
 const api = require('./routes/api/index')
-const PORT = 8080;
+
 
 const User = require('./database/models/User')
 require('dotenv').config();
 
-let client = redis.createClient({url: process.env.REDIS_URL});
+const PORT = process.env.EXPRESS_HOST_PORT;
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const REDIS_HOSTNAME = process.env.REDIS_HOSTNAME;
+
+if (!PORT) { console.log('No Port Found'); }
+if (!SESSION_SECRET) { console.log('No Session Secret Found'); }
+if (!REDIS_HOSTNAME) { console.log('No Redis Hostname Found'); }
+if (!PORT || !SESSION_SECRET || !REDIS_HOSTNAME) { return process.exit(1); }
+
+let client = redis.createClient({url: process.env.REDIS_HOSTNAME});
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({extended: true}));
 app.use(dbDecorator);
 
 app.use(
   session({
     store: new RedisStore({ client }),
-    secret: process.env.REDIS_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
   })
@@ -69,7 +78,7 @@ app.use(
   
   passport.deserializeUser(function(user, done) {
     console.log("deserializing");
-    console.log(user);
+    // console.log(user);
     return done(null, user);
   });
 
