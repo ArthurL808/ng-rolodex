@@ -1,22 +1,25 @@
-import { Component } from '@angular/core';
-import {BackendService} from '../../services/backend.service'
+import { Component } from "@angular/core";
+import { BackendService } from "../../services/backend.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent {
   contacts;
   formData = {
-    name: '',
+    name: ""
   };
 
-  constructor(private backend: BackendService) { }
+  constructor(private backend: BackendService) {}
 
-      search = () => {
-      this.backend.search(this.formData.name).then(res => {
-        this.contacts = res;
-      });
-      }
+  search = () => {
+    const cap =
+      this.formData.name.charAt(0).toUpperCase() + this.formData.name.slice(1);
+
+    this.backend.search(cap).then(res => {
+      this.contacts = res;
+    });
+  };
 }
