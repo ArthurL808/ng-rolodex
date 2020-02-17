@@ -15,10 +15,10 @@ export class HomeComponent {
   constructor(private backend: BackendService) {}
 
   search = () => {
-    const cap =
+    const capitalizeFirstLetter =
       this.formData.name.charAt(0).toUpperCase() + this.formData.name.slice(1);
-
-    this.backend.search(cap).then(res => {
+    
+    this.backend.search(capitalizeFirstLetter).then(res => {
       this.contacts = res;
     });
   };
