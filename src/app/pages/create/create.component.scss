@@ -1,0 +1,35 @@
+.newContact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    padding: 1em;
+    width: 50%;
+  }
+  
+  input {
+    margin: 1em;
+    padding: 0.8em;
+    width: 50%;
+    align-self: center;
+    text-align: center;
+  }
+  button{
+      margin: 1em;
+      padding: 1em;
+      width: 50%;
+      align-self: center;
+  }
+
+  h1{
+    font-family: "Rubik", sans-serif;
+    text-align: center;
+  }
+  
