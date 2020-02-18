@@ -64,4 +64,8 @@ passwordValid = false;
     }
   }
 
+  register = () =>{
+    return this.router.navigate(['/register'])
+  }
+
 }

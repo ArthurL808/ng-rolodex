@@ -6,7 +6,7 @@
 .header-left {
   width: 50%;
   font-family: 'Rubik', sans-serif;
-  font-size: 24px;
+  font-size: 2em;
 }
 .header-right {
   display: flex;
@@ -24,7 +24,7 @@
     a {
       text-decoration: none;
       color: white;
-      font-size: 18px;
+      font-size: 1em;
       font-family: "Roboto", sans-serif;
     }
   }
@@ -33,11 +33,7 @@
 .logged-in {
   display: flex;
   flex-direction: column;
-  margin: 16px;
-  font-size: 16px;
+  margin: 1em;
+  font-size: 1em;
   font-family: 'Rubik', sans-serif;
-}
-
-button{
-    font-family: "Roboto", sans-serif;
 }

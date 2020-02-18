@@ -17,12 +17,7 @@ export class HeaderComponent {
       this.user = this.session.getSession();
     }
 
-  login = () => {
-  return this.router.navigate(['/login'])
-  }
-  register = () =>{
-    return this.router.navigate(['/register'])
-  }
+  
   logout = () => {
   this.auth.logout();
 
