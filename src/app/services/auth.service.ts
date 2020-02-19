@@ -16,7 +16,7 @@ export class AuthService {
        this.session.setSession(res);
        return res;
    }).catch(err =>{
-       console.log(err.message)
+       console.log(err)
    })
     }
 

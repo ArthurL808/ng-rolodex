@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 
 @Injectable({
@@ -8,13 +9,16 @@ import {Injectable} from '@angular/core';
 export class SessionService {
 user = {
     id: 0,
+    name: '',
     username: '',
     email: '',
     address: '',
-    loggedIn: false
 };
 
+private _isLoggedIn = new BehaviorSubject<boolean>(false);
+
 constructor(){
+
     const userString = localStorage.getItem('user');
     try {
         if(userString){
@@ -22,6 +26,7 @@ constructor(){
         } else{
             console.log('user was not found')
         }
+        this._isLoggedIn.next(!!userString)
     } catch(err){
         console.log('could not parse user')
     }
@@ -33,26 +38,31 @@ constructor(){
 
     setSession(data){
     this.user.id = data.id;
+    this.user.name = data.name;
     this.user.username = data.username;
     this.user.email = data.email;
     this.user.address = data.address;
-    this.user.loggedIn = true;
 
     const userString = JSON.stringify(this.user)
     localStorage.setItem('user', userString )
+
+    this._isLoggedIn.next(true);
     }
 
     clearSession() {
     this.user.id = 0;
+    this.user.name = '';
     this.user.username = '';
     this.user.email = '';
     this.user.address = '';
-    this.user.loggedIn = false;
+    
 
     localStorage.removeItem('user');
+
+    this._isLoggedIn.next(false);
     }
 
-    isLoggedIn(){
-        return this.user.loggedIn;
+    loggedInObservable(){
+        return this._isLoggedIn.asObservable();
     }
 };

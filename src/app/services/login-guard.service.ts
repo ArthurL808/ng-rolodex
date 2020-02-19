@@ -7,13 +7,24 @@ import { SessionService } from './session.service';
     providedIn: 'root'
 })
 export class LoginGuardService implements CanActivate{
+    private _isLoggedIn = false;
+    private _loggedInObservable;
     constructor(
         private session: SessionService,
         private router: Router){}
 
         canActivate(): boolean {
-            if(!this.session.isLoggedIn()){
+            this._loggedInObservable = this.session.loggedInObservable().subscribe(
+                (loggedIn: boolean) => {
+                  this._isLoggedIn = loggedIn;
+                },
+                (error) => {
+            console.log(error);
+                },
+              );
+            if(!this._isLoggedIn) {
                 this.router.navigate(['login'])
+                this._loggedInObservable.unsubscribe()
                 return false;
             }
             return true;

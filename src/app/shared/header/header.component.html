@@ -30,8 +30,8 @@
         </a>
       </li>
     </ul>
-    <p class="logged-in" *ngIf="user.loggedIn">
-      Welcome, {{user.username}}
+    <p class="logged-in" *ngIf="isLoggedIn()">
+      Welcome, {{user.name}}
       <button (click)='logout()'>Logout</button>
   </p>
   </div>

@@ -9,7 +9,7 @@ const saltRounds = 12;
 
 router.post("/login",
   passport.authenticate("local"), function (req,res) {
-      console.log(req.user)  
+       
     res.json(req.user)
   }
 );
@@ -34,7 +34,7 @@ router.post("/register", (req, res) => {
       })
         .save()
         .then(user => {
-          console.log(user);
+          
           return res.json(user);
         })
         .catch(err => {

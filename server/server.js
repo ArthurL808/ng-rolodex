@@ -44,7 +44,6 @@ app.use(
       return new User({ username: username })
         .fetch()
         .then(user => {
-          console.log('this is the user:',user);
   
           if (user === null) {
             return done(null, false, { message: "bad username or password" });
@@ -78,7 +77,6 @@ app.use(
   
   passport.deserializeUser(function(user, done) {
     console.log("deserializing");
-    // console.log(user);
     return done(null, user);
   });
 
